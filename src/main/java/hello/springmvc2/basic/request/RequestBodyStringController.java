@@ -9,6 +9,8 @@ import org.springframework.http.HttpEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.StreamUtils;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -51,6 +53,14 @@ public class RequestBodyStringController {
         String body = httpEntity.getBody();
         log.info("messageBody3:{}", body);
         return new HttpEntity<>("ok");
+    }
+
+
+    @ResponseBody
+    @PostMapping("/request-body-string-v4")
+    public String requestBodyStringV4(@RequestBody String messageBody) throws IOException {
+        log.info("messageBody4:{}", messageBody);
+        return "ok";
     }
 
 }
